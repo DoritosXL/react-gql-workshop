@@ -54,7 +54,7 @@ export default {
 Add to `src/index.css`:
 
 ```css
-@import "tailwindcss";
+@import 'tailwindcss';
 ```
 
 ## 5. Install GraphQL + gql.tada
@@ -154,6 +154,7 @@ yarn dlx storybook@latest init
 ```
 
 Storybook auto-detects Vite and React. Accept the defaults. This adds:
+
 - `.storybook/main.ts` — builder and addon config
 - `.storybook/preview.ts` — global decorators/parameters
 - `src/stories/` — example stories
@@ -180,4 +181,34 @@ Add to `package.json` scripts:
 ```json
 "storybook": "storybook dev -p 6006",
 "build-storybook": "storybook build"
+```
+
+## 8. Deploy the API to Vercel
+
+Run from `apps/api/`:
+
+```bash
+vercel
+```
+
+Follow the prompts — create a new project, root directory is `./`.
+
+**How Vercel serverless functions work:** Vercel treats any file inside an `api/` directory as a serverless function and compiles it internally at deploy time — TypeScript included. You don't run `tsc` yourself; Vercel owns that step. This is different from platforms like Railway or Render where you run a long-lived Node process and need to compile TypeScript first.
+
+Because of this, Vercel detects the `build` script in `package.json` (which runs `tsc`) and tries to run it — conflicting with its own compilation and causing the deployment to fail. The `tsc` script is not wrong, it's just not needed on Vercel. Disable it in `apps/api/vercel.json`:
+
+```json
+{
+  "buildCommand": "",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api" }
+  ]
+}
+```
+
+Without `"buildCommand": ""`, every deployment will fail with exit code 2.
+
+After deploying, the GraphQL endpoint is available at:
+```
+https://<your-project>.vercel.app/api
 ```

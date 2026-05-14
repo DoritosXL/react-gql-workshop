@@ -1,6 +1,6 @@
-import { createSchema } from 'graphql-yoga';
-import { users, posts, comments } from './data.js';
-import type { User, Post, Comment } from './data.js';
+import { createSchema } from 'graphql-yoga'
+import { users, posts, comments } from './data.js'
+import type { User, Post, Comment } from './data.js'
 
 export const schema = createSchema({
   typeDefs: /* GraphQL */ `
@@ -61,19 +61,16 @@ export const schema = createSchema({
     User: {
       posts: (user: User) =>
         posts.filter((p) => p.authorId === user.id && p.published),
-      comments: (user: User) =>
-        comments.filter((c) => c.authorId === user.id),
+      comments: (user: User) => comments.filter((c) => c.authorId === user.id),
     },
     Post: {
       author: (post: Post) => users.find((u) => u.id === post.authorId)!,
-      comments: (post: Post) =>
-        comments.filter((c) => c.postId === post.id),
+      comments: (post: Post) => comments.filter((c) => c.postId === post.id),
     },
     Comment: {
       author: (comment: Comment) =>
         users.find((u) => u.id === comment.authorId)!,
-      post: (comment: Comment) =>
-        posts.find((p) => p.id === comment.postId)!,
+      post: (comment: Comment) => posts.find((p) => p.id === comment.postId)!,
     },
   },
-});
+})

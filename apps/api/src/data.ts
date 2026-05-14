@@ -1,26 +1,26 @@
-export type Role = 'ADMIN' | 'EDITOR' | 'VIEWER';
+export type Role = 'ADMIN' | 'EDITOR' | 'VIEWER'
 
 export interface User {
-  id: string;
-  name: string;
-  email: string;
-  role: Role;
+  id: string
+  name: string
+  email: string
+  role: Role
 }
 
 export interface Post {
-  id: string;
-  title: string;
-  body: string;
-  published: boolean;
-  tags: string[];
-  authorId: string;
+  id: string
+  title: string
+  body: string
+  published: boolean
+  tags: string[]
+  authorId: string
 }
 
 export interface Comment {
-  id: string;
-  text: string;
-  authorId: string;
-  postId: string;
+  id: string
+  text: string
+  authorId: string
+  postId: string
 }
 
 export const users: User[] = [
@@ -48,7 +48,7 @@ export const users: User[] = [
     email: 'dave@example.com',
     role: 'EDITOR',
   },
-];
+]
 
 export const posts: Post[] = [
   {
@@ -91,7 +91,7 @@ export const posts: Post[] = [
     tags: ['graphql', 'schema', 'advanced'],
     authorId: '2',
   },
-];
+]
 
 export const comments: Comment[] = [
   {
@@ -136,4 +136,4 @@ export const comments: Comment[] = [
     authorId: '4',
     postId: '4',
   },
-];
+]

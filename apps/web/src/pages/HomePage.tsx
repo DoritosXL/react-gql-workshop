@@ -5,7 +5,9 @@ export default function HomePage() {
         <span className="font-mono text-xs tracking-widest text-emerald-400 uppercase">
           Phase 1 — Routing
         </span>
-        <h1 className="text-5xl font-bold tracking-tight">react-gql-workshop</h1>
+        <h1 className="text-5xl font-bold tracking-tight">
+          react-gql-workshop
+        </h1>
         <p className="mt-2 text-lg text-gray-400">
           A learning scaffold for React Router, GraphQL, and gql.tada
         </p>
@@ -23,8 +25,8 @@ export default function HomePage() {
       </div>
 
       <p className="max-w-prose text-sm text-gray-500">
-        Use the nav above to explore the placeholder pages. Data fetching will be wired up in a
-        later phase.
+        Use the nav above to explore the placeholder pages. Data fetching will
+        be wired up in a later phase.
       </p>
     </div>
   )

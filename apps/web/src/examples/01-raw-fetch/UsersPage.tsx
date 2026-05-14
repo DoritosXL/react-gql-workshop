@@ -21,7 +21,7 @@ export default function UsersPage() {
   useEffect(() => {
     async function fetchUsers() {
       const data: { data: UserQueryResult } = await fetch(
-        'https://react-gql-workshop-api.vercel.app/api',
+        'http://localhost:4000/graphql',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -46,15 +46,13 @@ export default function UsersPage() {
       <div className="rounded-xl border border-dashed border-gray-700 bg-gray-900/50 p-12 text-center">
         <div className="text-sm text-gray-500">
           <ul>
-            {userData.length > 0 ? (
-              userData.map((user) => (
-                <li key={user.id}>
-                  {user.id} {user.name} {user.role}
-                </li>
-              ))
-            ) : (
-              <div className="animate-pulse rounded-md bg-gray-800 h-4 w-full" />
-            )}
+            {userData.length > 0
+              ? userData.map((user) => (
+                  <li key={user.id}>
+                    {user.id} {user.name} {user.role}
+                  </li>
+                ))
+              : ''}
           </ul>
         </div>
       </div>
