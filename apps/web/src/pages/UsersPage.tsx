@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react'
 import { graphql } from '../graphql'
 import { print } from 'graphql'
 import type { ResultOf } from 'gql.tada'
+import { UserBadge, UserBadgeFragment } from '@/components/userBadge/UserBadge'
 
 const UserQuery = graphql(`
   query getUsers {
     users {
       id
-      name
-      role
+      ...UserBadge
     }
   }
-`)
+`, [UserBadgeFragment])
 
 type UserQueryResult = ResultOf<typeof UserQuery>
 
@@ -49,7 +49,7 @@ export default function UsersPage() {
             {userData.length > 0 ? (
               userData.map((user) => (
                 <li key={user.id}>
-                  {user.id} {user.name} {user.role}
+                  <UserBadge key={user.id} fragment={user}/>
                 </li>
               ))
             ) : (

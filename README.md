@@ -29,9 +29,11 @@ Work through a series of examples — from simple to complex — that demonstrat
 
 ### Phase 2 — Components & Stories
 
-- [ ] Build data-driven UI components
-- [ ] Document each component in Storybook
-- [ ] Write unit tests with Vitest + React Testing Library
+- [x] Build a data-driven UI component (`UserBadge`)
+- [x] Colocate data requirements with components using fragment masking (`FragmentOf`, `readFragment`)
+- [x] Establish a stubs pattern (`UserBadge.stubs.ts`) for typed mock fragments using `ResultOf`
+- [x] Document components in Storybook with stories per variant
+- [x] Test components using Storybook's built-in test runner and `play` functions instead of separate spec files
 
 ### Phase 3 — Routing & Data Fetching
 
@@ -41,7 +43,6 @@ Work through a series of examples — from simple to complex — that demonstrat
 
 ### Phase 4 — Advanced GraphQL
 
-- [ ] Fragments with gql.tada's `FragmentOf` for colocation
 - [ ] Mutations and optimistic UI updates
 - [ ] Pagination (cursor-based and offset)
 
